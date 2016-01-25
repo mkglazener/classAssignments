@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <title>Gift List</title>
+  </head>
+  <body id="myApp">
+    <div class="sticky-note" v-for="sticky in stickyNotes" style="background-color:{{ sticky.color }};">
+      <h1>{{ sticky.subject }}</h1>
+      <ul>
+        <li v-for="assignment in sticky.assignments">{{ assignment }}</li>
+      </ul>
+      <div class="text-center">
+        <input type="text" v-model="sticky.newAssignment">
+        <input type="button" value="Add" v-on:click="addAssignment($index)">
+      </div>
+    </div>
+
+    <div class="add-sticky">
+      <label>Add New Sticky</label>
+      <input type="text" placeholder="Subject" v-model="newSticky">
+      <input type="button" value="Add" v-on:click="addSticky()">
+    </div>
+
+    <script type="text/javascript" src="node_modules/vue/dist/vue.min.js"></script>
+    <script type="text/javascript" src="sticky.js"></script>
+  </body>
+</html>
